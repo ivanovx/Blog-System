@@ -1,10 +1,9 @@
 package org.ivanovx.bloggable.service;
 
-
 import org.ivanovx.bloggable.entity.Article;
 import org.ivanovx.bloggable.entity.Category;
-import org.ivanovx.bloggable.inputModel.ArticleModel;
 import org.ivanovx.bloggable.repository.ArticleRepository;
+import org.ivanovx.bloggable.request.ArticleRequest;
 import org.ivanovx.bloggable.util.SlugGenerator;
 import org.ivanovx.bloggable.util.UserUtil;
 import org.springframework.stereotype.Service;
@@ -62,7 +61,7 @@ public class ArticleService {
         return this.articleRepository.findBySlug(slug).orElseThrow();
     }
 
-    public Article createArticle(ArticleModel model) {
+    public Article createArticle(ArticleRequest model) {
         Category category = this.categoryService.getCategory(model.getCategory());
 
         Article article = new Article();
@@ -80,7 +79,7 @@ public class ArticleService {
         return this.articleRepository.save(article);
     }
 
-    public Article updateArticle(long id, ArticleModel model) {
+    public Article updateArticle(long id, ArticleRequest model) {
         Article article = this.articleRepository.findById(id).orElseThrow();
         Category category = this.categoryService.getCategory(model.getCategory());
         Set<String> keywords = Arrays.stream(model.getKeywords().split(",")).collect(Collectors.toSet());
@@ -106,7 +105,6 @@ public class ArticleService {
         return articles;
     }
 
-    // Migrate from treemap to hashmap
     @Transactional(readOnly = true)
     public Map<YearMonth, Long> createArchive() {
         return this.getArticles()

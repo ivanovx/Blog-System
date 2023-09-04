@@ -29,7 +29,7 @@ public class HomeController {
         return "home/index";
     }
 
-  @GetMapping("/articles/{slug}")
+    @GetMapping("/articles/{slug}")
     public String article(@PathVariable String slug, Model model) {
         Article article = this.articleService.getArticle(slug);
 

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -24,6 +26,11 @@ public class SettingService {
     @Transactional(readOnly = true)
     public List<Setting> getSettings() {
         return this.settingRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Map<String, String> settingsMap() {
+        return this.getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
     }
 
     @Transactional(readOnly = true)

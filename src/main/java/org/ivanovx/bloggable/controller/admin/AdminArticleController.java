@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.ivanovx.bloggable.entity.Article;
 import org.ivanovx.bloggable.entity.Category;
-import org.ivanovx.bloggable.inputModel.ArticleModel;
+import org.ivanovx.bloggable.request.ArticleRequest;
 import org.ivanovx.bloggable.service.ArticleService;
 import org.ivanovx.bloggable.service.CategoryService;
 import org.springframework.stereotype.Controller;
@@ -37,14 +37,14 @@ public class AdminArticleController {
         List<Category> categories = this.categoryService.getCategories();
 
         model.addAttribute("categories", categories);
-        model.addAttribute("article", new ArticleModel());
+        model.addAttribute("article", new ArticleRequest());
 
         return "admin/articles/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute ArticleModel articleModel) {
-        this.articleService.createArticle(articleModel);
+    public String create(@ModelAttribute ArticleRequest request) {
+        this.articleService.createArticle(request);
 
         return "redirect:/admin";
     }
@@ -54,7 +54,7 @@ public class AdminArticleController {
         Article article = this.articleService.getArticle(id);
         List<Category> categories = this.categoryService.getCategories();
 
-        ArticleModel articleModel = ArticleModel.of(article);
+        ArticleRequest articleModel = ArticleRequest.of(article);
 
         model.addAttribute("articleId", article.getId());
         model.addAttribute("categories", categories);
@@ -64,7 +64,7 @@ public class AdminArticleController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable long id, @ModelAttribute ArticleModel articleModel) {
+    public String update(@PathVariable long id, @ModelAttribute ArticleRequest articleModel) {
         this.articleService.updateArticle(id, articleModel);
 
         return "redirect:/admin";

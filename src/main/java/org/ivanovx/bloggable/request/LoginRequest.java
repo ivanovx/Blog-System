@@ -1,9 +1,9 @@
-package org.ivanovx.bloggable.inputModel;
+package org.ivanovx.bloggable.request;
 
 import lombok.Data;
 
 @Data
-public class LoginModel {
+public class LoginRequest {
     private String username;
 
     private String password;

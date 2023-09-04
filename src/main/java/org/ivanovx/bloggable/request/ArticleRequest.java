@@ -1,4 +1,4 @@
-package org.ivanovx.bloggable.inputModel;
+package org.ivanovx.bloggable.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import org.ivanovx.bloggable.entity.Article;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleModel {
+public class ArticleRequest {
     private String title;
 
     private String content;
@@ -19,8 +19,8 @@ public class ArticleModel {
 
     private String keywords;
 
-    public static ArticleModel of(Article article) {
-        return ArticleModel
+    public static ArticleRequest of(Article article) {
+        return ArticleRequest
                 .builder()
                 .title(article.getTitle())
                 .content(article.getContent())
