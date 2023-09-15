@@ -1,12 +1,48 @@
 package org.ivanovx.bloggable.util;
 
-public class SlugGenerator {
-    static String[] latLow = {"a", "b", "v", "g", "d", "e", "yo", "zh", "z", "i", "y", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "kh", "ts", "ch", "sh", "shch", "\"", "y", "'", "e", "yu", "ya"};
+import java.util.Map;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-    static String[] rusLow = {"а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я"};
+public class SlugGenerator {
+    private static String[][] chars = new String[][]{
+            {"а", "a"},
+            {"б", "b"},
+            {"в", "v"},
+            {"г", "g"},
+            {"д", "d"},
+            {"е", "e"},
+            {"ж", "zh"},
+            {"з", "z"},
+            {"и", "i"},
+            {"й", "y"},
+            {"к", "k"},
+            {"л", "l"},
+            {"м", "m"},
+            {"н", "n"},
+            {"о", "o"},
+            {"п", "p"},
+            {"р", "r"},
+            {"с", "s"},
+            {"т", "t"},
+            {"у", "u"},
+            {"ф", "f"},
+            {"х", "kh"},
+            {"ц", "ts"},
+            {"ч", "ch"},
+            {"ш", "sh"},
+            {"щ", "shch"},
+            {"ъ", "\""},
+            {"ы", "y"},
+            {"ь", "'"},
+            {"ю", "yu"},
+            {"я", "ya"}
+    };
+
+    private static Map<String, String> characters = Arrays.stream(chars).collect(Collectors.toMap(e -> e[0], e -> e[1]));
 
     public static String toSlug(String uglyString) {
-        char ugly[] = cyrillicToLatin(uglyString.toLowerCase()).toCharArray();
+        char ugly[] = uglyString.toLowerCase().toCharArray();
 
         StringBuffer result = new StringBuffer();
 
@@ -14,7 +50,7 @@ public class SlugGenerator {
 
         for (char c : ugly) {
             if (Character.isLetterOrDigit(c)) {
-                result.append(c);
+                result.append(characters.get(c));
                 isLastCharacterDash = false;
             } else if (!isLastCharacterDash) {
                 result.append('-');
@@ -22,14 +58,6 @@ public class SlugGenerator {
             }
         }
 
-        return result.toString().replace(' ', '-');
-    }
-
-    private static String cyrillicToLatin(String str) {
-        for (int i = 0; i <= 32; i++) {
-            str = str.replace(rusLow[i], latLow[i]);
-        }
-
-        return str;
+        return result.toString();
     }
 }

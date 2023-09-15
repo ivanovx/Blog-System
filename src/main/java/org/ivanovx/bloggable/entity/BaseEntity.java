@@ -1,10 +1,12 @@
 package org.ivanovx.bloggable.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.PastOrPresent;
 import lombok.Data;
 
+
 import java.time.LocalDateTime;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Data
 @MappedSuperclass
