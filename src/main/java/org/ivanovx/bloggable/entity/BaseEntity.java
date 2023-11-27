@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Data
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,5 +23,5 @@ public abstract class BaseEntity implements Serializable {
     private LocalDateTime modified = null;
 
     @Version
-    private Long version;
+    private Long version = 1L;
 }
