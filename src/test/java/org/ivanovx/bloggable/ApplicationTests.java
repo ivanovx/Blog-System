@@ -1,10 +1,10 @@
-package org.bloggable;
+package org.ivanovx.bloggable;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BloggableApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

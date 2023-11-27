@@ -69,7 +69,7 @@ public class ArticleService {
         article.setCategory(category);
         article.setTitle(model.getTitle());
         article.setContent(model.getContent());
-        article.setAuthor(UserUtil.getActiveUser());
+       // article.setAuthor(UserUtil.getActiveUser());
         article.setSlug(SlugGenerator.toSlug(model.getTitle()));
 
         Set<String> keywords = Arrays.stream(model.getKeywords().split(",")).collect(Collectors.toSet());
