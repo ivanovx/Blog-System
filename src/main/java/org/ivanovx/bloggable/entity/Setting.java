@@ -1,18 +1,15 @@
 package org.ivanovx.bloggable.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Column;
 
 @Data
 @Entity
 @Table(name="settings")
-public class Setting {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Setting extends BaseEntity {
     @Column(unique = true, updatable = false)
     private String name;
 

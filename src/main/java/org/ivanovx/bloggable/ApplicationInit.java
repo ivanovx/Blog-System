@@ -2,14 +2,14 @@ package org.ivanovx.bloggable;
 
 import java.util.Map;
 
-import org.ivanovx.bloggable.util.Constants;
-import org.springframework.stereotype.Component;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.ApplicationArguments;
+import org.springframework.stereotype.Component;
 
-import org.ivanovx.bloggable.service.CategoryService;
-import org.ivanovx.bloggable.service.SettingService;
+import org.ivanovx.bloggable.util.Constants;
 import org.ivanovx.bloggable.service.UserService;
+import org.ivanovx.bloggable.service.SettingService;
+import org.ivanovx.bloggable.service.CategoryService;
 
 @Component
 public class ApplicationInit implements ApplicationRunner {
