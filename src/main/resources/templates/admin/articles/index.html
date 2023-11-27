@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout.html}">
+    <head>
+        <title>Articles</title>
+    </head>
+    <body>
+        <section layout:fragment="content">
+             <ul class="list-group">
+                <li class="list-group-item">
+                    Articles
+                    <a th:href="@{/admin/articles/create}" class="btn btn-primary">Create</a>
+                </li>
+                <li th:each="article: ${articles}" class="list-group-item">
+                    <span th:text="${article.title}"></span>
+                    <a th:href="@{/admin/articles/update/{id}(id=${article.id})}" class="btn btn-info">Update</a>
+                </li>
+            </ul>
+        </section>
+    </body>
+</html>

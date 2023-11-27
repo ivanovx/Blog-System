@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class SlugGenerator {
-    private static String[][] chars = new String[][]{
+    private static final String[][] chars = new String[][]{
             {"а", "a"},
             {"б", "b"},
             {"в", "v"},
@@ -39,7 +39,7 @@ public class SlugGenerator {
             {"я", "ya"}
     };
 
-    private static Map<String, String> characters = Arrays.stream(chars).collect(Collectors.toMap(e -> e[0], e -> e[1]));
+    private static final Map<String, String> characters = Arrays.stream(chars).collect(Collectors.toMap(e -> e[0], e -> e[1]));
 
     public static String toSlug(String uglyString) {
         char ugly[] = uglyString.toLowerCase().toCharArray();
@@ -50,7 +50,11 @@ public class SlugGenerator {
 
         for (char c : ugly) {
             if (Character.isLetterOrDigit(c)) {
-                result.append(characters.get(c));
+                if (Character.UnicodeBlock.of(c).equals(Character.UnicodeBlock.CYRILLIC)) {
+                    result.append(characters.get(c));
+                } else {
+                    result.append(c);
+                }
                 isLastCharacterDash = false;
             } else if (!isLastCharacterDash) {
                 result.append('-');

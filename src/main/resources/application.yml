@@ -9,7 +9,3 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: false
-  mvc:
-    view:
-      prefix: /WEB-INF/
-      suffix: .jsp

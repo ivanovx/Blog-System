@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,7 +15,6 @@ import java.util.Set;
 @Table(name = "articles")
 @EntityListeners(AuditingEntityListener.class)
 public class Article extends BaseEntity {
-
     @Column(nullable = false)
     private String slug;
 
@@ -33,5 +33,5 @@ public class Article extends BaseEntity {
 
     @CreatedBy
     @ManyToOne
-    private User author;
+    private User user;
 }

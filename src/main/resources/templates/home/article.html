@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout.html}">
+    <head>
+        <title th:text="${article.title}"></title>
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <h2 class="mb-0" th:text="${article.title}"></h2>
+            <div class="mb-1 text-body-secondary" th:text="${#temporals.format(article.created, 'dd MMMM yyyy')}"></div>
+            <div th:utext="${article.content}"></div>
+        </section>
+    </body>
+</html>

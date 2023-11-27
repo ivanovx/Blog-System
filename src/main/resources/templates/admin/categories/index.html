@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout.html}">
+<head>
+  <title>Categories</title>
+</head>
+<body>
+<section layout:fragment="content">
+  <ul class="list-group">
+    <li class="list-group-item">
+      Categories
+      <a th:href="@{/admin/categories/create}" class="btn btn-primary">Create</a>
+    </li>
+    <li th:each="category: ${categories}" class="list-group-item">
+      <span th:text="${category.name}"></span>
+      <a th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn btn-info">Update</a>
+    </li>
+  </ul>
+</section>
+</body>
+</html>

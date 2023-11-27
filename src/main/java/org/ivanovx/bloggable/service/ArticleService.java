@@ -5,7 +5,6 @@ import org.ivanovx.bloggable.entity.Category;
 import org.ivanovx.bloggable.repository.ArticleRepository;
 import org.ivanovx.bloggable.request.ArticleRequest;
 import org.ivanovx.bloggable.util.SlugGenerator;
-import org.ivanovx.bloggable.util.UserUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

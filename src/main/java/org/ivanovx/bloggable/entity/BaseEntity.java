@@ -2,11 +2,13 @@ package org.ivanovx.bloggable.entity;
 
 import lombok.Data;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.PastOrPresent;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import jakarta.persistence.*;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Data
 @MappedSuperclass
@@ -15,13 +17,12 @@ public abstract class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @PastOrPresent
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime created = LocalDateTime.now();
+    @CreatedDate
+    private LocalDateTime created;
 
-    @PastOrPresent
-    private LocalDateTime modified = null;
+    @LastModifiedDate
+    private LocalDateTime modified;
 
     @Version
-    private Long version = 1L;
+    private Long version;
 }
