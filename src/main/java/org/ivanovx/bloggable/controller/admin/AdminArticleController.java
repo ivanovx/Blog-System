@@ -25,7 +25,7 @@ public class AdminArticleController {
 
     @GetMapping
     public String index(Model model) {
-        List<Article> articles = this.articleService.getArticles();
+        List<Article> articles = articleService.getArticles();
 
         model.addAttribute("articles", articles);
 
@@ -34,7 +34,7 @@ public class AdminArticleController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        List<Category> categories = this.categoryService.getCategories();
+        List<Category> categories = categoryService.getCategories();
 
         model.addAttribute("categories", categories);
         model.addAttribute("article", new ArticleRequest());
@@ -44,15 +44,15 @@ public class AdminArticleController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute ArticleRequest request) {
-        this.articleService.createArticle(request);
+        articleService.createArticle(request);
 
         return "redirect:/admin";
     }
 
     @GetMapping("/update/{id}")
     public String update(@PathVariable long id, Model model) {
-        Article article = this.articleService.getArticle(id);
-        List<Category> categories = this.categoryService.getCategories();
+        Article article = articleService.getArticle(id);
+        List<Category> categories = categoryService.getCategories();
 
         ArticleRequest articleModel = ArticleRequest.of(article);
 
@@ -65,7 +65,7 @@ public class AdminArticleController {
 
     @PostMapping("/update/{id}")
     public String update(@PathVariable long id, @ModelAttribute ArticleRequest articleModel) {
-        this.articleService.updateArticle(id, articleModel);
+        articleService.updateArticle(id, articleModel);
 
         return "redirect:/admin";
     }

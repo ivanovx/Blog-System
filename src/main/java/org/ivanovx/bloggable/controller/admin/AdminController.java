@@ -20,6 +20,7 @@ public class AdminController {
         this.categoryService = categoryService;
     }
 
+    // TODO
     // Default password change
     @GetMapping
     public String index(Model model) {

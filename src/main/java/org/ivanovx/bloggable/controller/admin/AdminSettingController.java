@@ -1,11 +1,14 @@
 package org.ivanovx.bloggable.controller.admin;
 
-import org.ivanovx.bloggable.entity.Setting;
+
 import org.ivanovx.bloggable.entity.User;
+import org.ivanovx.bloggable.entity.Setting;
 import org.ivanovx.bloggable.service.SettingService;
-import org.springframework.stereotype.Controller;
+
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
 
 import java.security.Principal;
 import java.util.List;
@@ -19,6 +22,7 @@ public class AdminSettingController {
         this.settingService = settingService;
     }
 
+    // TODO
     @GetMapping
     public String index(Model model, Principal principal) {
         User user = (User) principal;

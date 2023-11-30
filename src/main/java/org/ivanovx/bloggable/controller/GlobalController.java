@@ -8,36 +8,37 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import org.ivanovx.bloggable.entity.Category;
-import org.ivanovx.bloggable.service.ArticleService;
-import org.ivanovx.bloggable.service.CategoryService;
+import org.ivanovx.bloggable.service.ArchiveService;
 import org.ivanovx.bloggable.service.SettingService;
+import org.ivanovx.bloggable.service.CategoryService;
 
 @ControllerAdvice
 public class GlobalController {
-    private final ArticleService articleService;
+
+    private final ArchiveService archiveService;
 
     private final SettingService settingService;
 
     private final CategoryService categoryService;
 
-    public GlobalController(ArticleService articleService, SettingService settingService, CategoryService categoryService) {
-        this.articleService = articleService;
+    public GlobalController(ArchiveService archiveService, SettingService settingService, CategoryService categoryService) {
+        this.archiveService = archiveService;
         this.settingService = settingService;
         this.categoryService = categoryService;
     }
 
     @ModelAttribute("categories")
     public List<Category> categories() {
-        return this.categoryService.getCategories();
+        return categoryService.getCategories();
     }
 
     @ModelAttribute("settings")
     public Map<String, String> settings() {
-        return this.settingService.settingsMap();
+        return settingService.settingsMap();
     };
 
     @ModelAttribute("archive")
     public Map<YearMonth, Long> archive() {
-        return articleService.createArchive();
+        return archiveService.create();
     }
 }

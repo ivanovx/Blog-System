@@ -21,7 +21,7 @@ public class ArchiveServiceImpl implements ArchiveService {
     }
 
     @Transactional(readOnly = true)
-    public List<Article> getArchive(int month, int year) {
+    public List<Article> get(int month, int year) {
         YearMonth yearMonth = YearMonth.of(year, month);
 
         return articleRepository
@@ -32,7 +32,7 @@ public class ArchiveServiceImpl implements ArchiveService {
     }
 
     @Transactional(readOnly = true)
-    public Map<YearMonth, Long> createArchive() {
+    public Map<YearMonth, Long> create() {
         return articleRepository
                 .findAll()
                 .stream()

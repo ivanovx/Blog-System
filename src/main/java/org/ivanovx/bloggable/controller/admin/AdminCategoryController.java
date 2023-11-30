@@ -20,7 +20,7 @@ public class AdminCategoryController {
 
     @GetMapping
     public String index(Model model) {
-        List<Category> categories = this.categoryService.getCategories();
+        List<Category> categories = categoryService.getCategories();
 
         model.addAttribute("categories", categories);
 
@@ -36,14 +36,14 @@ public class AdminCategoryController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute Category category) {
-        this.categoryService.createCategory(category);
+        categoryService.createCategory(category);
 
         return "redirect:/admin";
     }
 
     @GetMapping("/update/{id}")
     public String update(@PathVariable long id, Model model) {
-        Category category = this.categoryService.getCategory(id);
+        Category category = categoryService.getCategory(id);
 
         model.addAttribute("category", category);
 
@@ -52,7 +52,7 @@ public class AdminCategoryController {
 
     @PostMapping("/update/{id}")
     public String update(@PathVariable long id, @ModelAttribute Category category) {
-        this.categoryService.updateCategory(id, category.getName());
+        categoryService.updateCategory(id, category.getName());
 
         return "redirect:/admin";
     }
