@@ -2,6 +2,7 @@ package org.blogy.controller.admin;
 
 import org.blogy.service.ArticleService;
 import org.blogy.service.CategoryService;
+
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,8 @@ public class AdminController {
     // Default password change
     @GetMapping
     public String index(Model model) {
-        long articlesCount = this.articleService.count();
-        long categoriesCount = this.categoryService.count();
+        long articlesCount = articleService.count();
+        long categoriesCount = categoryService.count();
 
         model.addAttribute("articlesCount", articlesCount);
         model.addAttribute("categoriesCount", categoriesCount);

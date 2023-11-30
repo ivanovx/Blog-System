@@ -1,16 +1,12 @@
 package org.blogy.controller.admin;
 
-
 import org.blogy.entity.Setting;
-import org.blogy.entity.User;
 import org.blogy.service.SettingService;
-
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -22,23 +18,19 @@ public class AdminSettingController {
         this.settingService = settingService;
     }
 
-    // TODO
     @GetMapping
-    public String index(Model model, Principal principal) {
-        User user = (User) principal;
+    public String index(Model model) {
+        List<Setting> settings = settingService.getSettings();
 
-        List<Setting> settings = this.settingService.getSettings();
-
-        model.addAttribute("settings", settings);
-        model.addAttribute("user", user);
+        model.addAttribute("allSettings", settings);
 
         return "admin/settings";
     }
 
-    @PostMapping("/{id}")
+   /* @PostMapping("/{id}")
     public String updateSetting(@PathVariable long id, @RequestParam("value") String value) {
-        this.settingService.updateSetting(id, value);
+        settingService.updateSetting(id, value);
 
-        return "redirect:/";
-    }
+        return "redirect:/admin/settings";
+    }*/
 }

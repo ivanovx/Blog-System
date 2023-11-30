@@ -7,11 +7,14 @@ import java.util.Set;
 
 import jakarta.validation.constraints.Pattern;
 
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
 @Entity
+@Indexed
 @Table(name = "articles")
 @EntityListeners(AuditingEntityListener.class)
 public class Article extends BaseEntity {
@@ -21,6 +24,7 @@ public class Article extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
+    @FullTextField
     @Column(nullable = false, columnDefinition="TEXT")
     private String content;
 

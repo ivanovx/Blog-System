@@ -24,12 +24,10 @@ public class SettingServiceImpl implements SettingService {
         return settingRepository.count();
     }
 
-    @Transactional(readOnly = true)
     public List<Setting> getSettings() {
         return settingRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Map<String, String> settingsMap() {
         return getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
     }

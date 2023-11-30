@@ -1,8 +1,9 @@
 services:
   database:
-    image: postgres:15.3
+    image: postgres:15.5
+    container_name: database
     environment:
-      - POSTGRES_DB=blogDb
+      - POSTGRES_DB=blogy
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:

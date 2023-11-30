@@ -2,10 +2,11 @@ package org.blogy.config;
 
 import java.util.Optional;
 
-import org.blogy.entity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import org.blogy.entity.User;
 
 @Component
 public class SecurityAuditorAware implements AuditorAware<User> {

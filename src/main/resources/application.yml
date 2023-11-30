@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/blogDb
+    url: jdbc:postgresql://localhost:5432/blogy
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -9,6 +9,12 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: false
+
+hibernate:
+  search:
+    backend:
+      directory:
+        root: some/filesystem/path
 
 blogy:
   admin:

@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.List;
 import java.time.YearMonth;
 
+import org.blogy.request.SearchRequest;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
@@ -39,5 +40,10 @@ public class GlobalController {
     @ModelAttribute("archive")
     public Map<YearMonth, Long> archive() {
         return archiveService.create();
+    }
+
+    @ModelAttribute("search")
+    public SearchRequest search() {
+        return new SearchRequest();
     }
 }
