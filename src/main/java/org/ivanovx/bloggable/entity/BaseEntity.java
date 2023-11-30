@@ -14,7 +14,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @CreatedDate

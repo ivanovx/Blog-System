@@ -73,7 +73,7 @@
                             </p>
                         </div>-->
                         <div class="p-4">
-                            <h4 class="fst-italic">Archives</h4>
+                            <h4 class="fst-italic">Archive</h4>
                             <ol class="list-unstyled mb-0">
                                 <li th:each="item: ${archive}">
                                     <a th:href="@{/archive/{month}/{year}(month=${item.key.month.value}, year=${item.key.year})}"
