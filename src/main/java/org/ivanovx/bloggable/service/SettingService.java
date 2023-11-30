@@ -1,62 +1,22 @@
 package org.ivanovx.bloggable.service;
 
-import org.ivanovx.bloggable.entity.Setting;
-import org.ivanovx.bloggable.repository.SettingRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-@Service
-@Transactional
-public class SettingService {
-    private final SettingRepository settingRepository;
+import org.ivanovx.bloggable.entity.Setting;
 
-    public SettingService(SettingRepository settingRepository) {
-        this.settingRepository = settingRepository;
-    }
+public interface SettingService {
+    long count();
 
-    @Transactional(readOnly = true)
-    public long count() {
-        return this.settingRepository.count();
-    }
+    List<Setting> getSettings();
 
-    @Transactional(readOnly = true)
-    public List<Setting> getSettings() {
-        return this.settingRepository.findAll();
-    }
+    Map<String, String> settingsMap();
 
-    @Transactional(readOnly = true)
-    public Map<String, String> settingsMap() {
-        return this.getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
-    }
+    Setting getSetting(long id);
 
-    @Transactional(readOnly = true)
-    public Setting getSetting(long id) {
-        return this.settingRepository.findById(id).orElseThrow();
-    }
+    Setting getSetting(String name);
 
-    @Transactional(readOnly = true)
-    public Setting getSetting(String name) {
-        return this.settingRepository.findByName(name).orElseThrow();
-    }
+    Setting createSetting(String name, String value);
 
-    public Setting createSetting(String name, String value) {
-        Setting setting = new Setting();
-
-        setting.setName(name);
-        setting.setValue(value);
-
-        return this.settingRepository.save(setting);
-    }
-
-    public Setting updateSetting(long id, String value) {
-        Setting setting = this.getSetting(id);
-
-        setting.setValue(value);
-
-        return this.settingRepository.save(setting);
-    }
+    Setting updateSetting(long id, String value);
 }
