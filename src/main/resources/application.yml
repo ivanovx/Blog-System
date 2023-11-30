@@ -17,3 +17,7 @@ blogy:
     password: ivanovx
   default:
     category: Uncategorized
+    settings:
+      title: Sample blog title
+      description: Sample blog description
+      url: http://localhost:8080

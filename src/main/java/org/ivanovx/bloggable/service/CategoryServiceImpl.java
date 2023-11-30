@@ -1,7 +1,6 @@
 package org.ivanovx.bloggable.service;
 
 import java.util.List;
-import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,11 +41,10 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.save(category);
     }
 
-    public Category updateCategory(long id, String categoryName) {
+    public Category updateCategory(long id, String name) {
         Category category = getCategory(id);
 
-        category.setName(categoryName);
-        category.setModified(LocalDateTime.now());
+        category.setName(name);
 
         return this.categoryRepository.save(category);
     }

@@ -11,6 +11,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.ivanovx.bloggable.entity.Article;
 
 public interface ArticleRepository extends PagingAndSortingRepository<Article, Long>, CrudRepository<Article, Long> {
+
     List<Article> findAll();
 
     List<Article> findByOrderByCreatedDesc();
