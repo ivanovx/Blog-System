@@ -7,7 +7,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Blog</title>
+        <title>Blogy</title>
+
+        <link rel="canonical" th:href='${settings.get("url")}'>
 
         <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
@@ -22,7 +24,7 @@
                         <a href="/admin" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
                     </div>
                     <div class="col-4 text-center">
-                        <a href="/" class="blog-header-logo text-body-emphasis">Blog</a>
+                        <a href="/" class="blog-header-logo text-body-emphasis">Blogy</a>
                     </div>
                     <div class="col-4 d-flex justify-content-end align-items-center">
                         <div sec:authorize="isAuthenticated()">
@@ -51,12 +53,8 @@
         <main class="container">
             <div class="p-4 p-md-5 mb-4 rounded text-bg-dark header-img">
                 <div class="col-md-8 px-0">
-                    <h1 class="display-4 fst-italic">Ivan Ivanov's blog</h1>
-                    <p class="lead my-3">
-                        Experienced and quick-learning software developer with programming and architectural skills,
-                        with experience in web development with ASP.NET, Spring, NodeJS, ReactJS.
-                        Spend many years with Java and .NET, and prefer Java for software platform.
-                    </p>
+                    <h1 class="display-4 fst-italic" th:text='${settings.get("title")}'></h1>
+                    <p class="lead my-3" th:text='${settings.get("description")}'></p>
                 </div>
             </div>
             <div class="row g-5">
