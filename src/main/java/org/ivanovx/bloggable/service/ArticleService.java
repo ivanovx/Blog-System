@@ -1,7 +1,6 @@
 package org.ivanovx.bloggable.service;
 
-import java.util.*;
-import java.time.YearMonth;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,8 +24,4 @@ public interface ArticleService {
     Article createArticle(ArticleRequest model);
 
     Article updateArticle(long id, ArticleRequest model);
-
-    List<Article> getArchive(int month, int year);
-
-    Map<YearMonth, Long> createArchive();
 }

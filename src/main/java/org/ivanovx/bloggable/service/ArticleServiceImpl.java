@@ -1,7 +1,6 @@
 package org.ivanovx.bloggable.service;
 
 import java.util.*;
-import java.time.YearMonth;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
@@ -88,27 +87,5 @@ public class ArticleServiceImpl implements ArticleService {
         article.setKeywords(keywords);
 
         return articleRepository.save(article);
-    }
-
-    @Transactional(readOnly = true)
-    public List<Article> getArchive(int month, int year) {
-        YearMonth yearMonth = YearMonth.of(year, month);
-
-        List<Article> articles = getArticles()
-                .stream()
-                .filter(article -> YearMonth.from(article.getCreated()).compareTo(yearMonth) == 0)
-                .toList();
-
-        return articles;
-    }
-
-    @Transactional(readOnly = true)
-    public Map<YearMonth, Long> createArchive() {
-        return getArticles()
-                .stream()
-                .collect(Collectors.groupingBy(article -> YearMonth.from(article.getCreated()),
-                        HashMap::new,
-                        Collectors.counting()
-                ));
     }
 }

@@ -20,11 +20,7 @@ public class GlobalController {
 
     private final CategoryService categoryService;
 
-    public GlobalController(
-            ArticleService articleService,
-            SettingService settingService,
-            CategoryService categoryService
-    ) {
+    public GlobalController(ArticleService articleService, SettingService settingService, CategoryService categoryService) {
         this.articleService = articleService;
         this.settingService = settingService;
         this.categoryService = categoryService;

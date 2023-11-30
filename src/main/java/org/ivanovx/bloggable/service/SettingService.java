@@ -1,7 +1,7 @@
 package org.ivanovx.bloggable.service;
 
-import java.util.List;
 import java.util.Map;
+import java.util.List;
 
 import org.ivanovx.bloggable.entity.Setting;
 
