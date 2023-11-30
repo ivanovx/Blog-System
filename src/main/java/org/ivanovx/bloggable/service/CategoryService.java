@@ -40,7 +40,6 @@ public class CategoryService {
         return this.categoryRepository.save(category);
     }
 
-
     public Category updateCategory(long id, String categoryName) {
         Category category = this.getCategory(id);
 

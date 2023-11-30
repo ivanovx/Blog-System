@@ -2,13 +2,13 @@ package org.ivanovx.bloggable.entity;
 
 import jakarta.persistence.*;
 
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import java.util.Set;
+
+import jakarta.validation.constraints.Pattern;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.util.Set;
 
 @Data
 @Entity

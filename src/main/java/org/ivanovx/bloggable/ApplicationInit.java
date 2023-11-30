@@ -2,11 +2,15 @@ package org.ivanovx.bloggable;
 
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.ApplicationArguments;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 
-import org.ivanovx.bloggable.util.Constants;
+import org.ivanovx.bloggable.entity.Role;
+import org.ivanovx.bloggable.entity.User;
+import org.ivanovx.bloggable.entity.Category;
+
 import org.ivanovx.bloggable.service.UserService;
 import org.ivanovx.bloggable.service.SettingService;
 import org.ivanovx.bloggable.service.CategoryService;
@@ -19,6 +23,18 @@ public class ApplicationInit implements ApplicationRunner {
 
     private final CategoryService categoryService;
 
+    @Value("${blogy.admin.mail}")
+    private String email;
+
+    @Value("${blogy.admin.username}")
+    private String username;
+
+    @Value("${blogy.admin.password}")
+    private String password;
+
+    @Value("${blogy.default.category}")
+    private String defaultCategory;
+
     public ApplicationInit(UserService userService, SettingService settingService, CategoryService categoryService) {
         this.userService = userService;
         this.settingService = settingService;
@@ -28,18 +44,19 @@ public class ApplicationInit implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (!userService.haveAdminUser()) {
-            this.userService.createUser(Constants.DEFAULT_ADMIN);
+            userService.createUser(new User(email, username, password, Role.ADMIN));
         }
 
-        if (this.settingService.count() == 0) {
-            Map.of(
-                    "title", "Sample title",
-                    "description", "Sample description"
-            ).forEach((name, value) -> this.settingService.createSetting(name, value));
+        if (settingService.count() == 0) {
+            Map.ofEntries(
+                    Map.entry("title", "Sample title"),
+                    Map.entry("description", "Sample description")
+            ).forEach((name, value) -> settingService.createSetting(name, value));
         }
 
-        if (this.categoryService.count() == 0) {
-            this.categoryService.createCategory(Constants.DEFAULT_CATEGORY);
+        if (categoryService.count() == 0) {
+            //this.categoryService.createCategory(Constants.DEFAULT_CATEGORY);
+            categoryService.createCategory(new Category(defaultCategory));
         }
     }
 }

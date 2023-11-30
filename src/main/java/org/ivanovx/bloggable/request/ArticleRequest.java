@@ -24,7 +24,7 @@ public class ArticleRequest {
                 .builder()
                 .title(article.getTitle())
                 .content(article.getContent())
-                .category(article.getCategory().getId())
+                //.category(article.getCategory().getId())
                 .keywords(String.join(",", article.getKeywords()))
                 .build();
     }

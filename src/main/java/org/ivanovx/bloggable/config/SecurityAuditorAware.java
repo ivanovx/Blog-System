@@ -4,21 +4,18 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.ivanovx.bloggable.entity.User;
-
 @Component
 public class SecurityAuditorAware implements AuditorAware<User> {
-
     @Override
     public Optional<User> getCurrentAuditor() {
-        return Optional.ofNullable(SecurityContextHolder.getContext())
-                .map(SecurityContext::getAuthentication)
-                .filter(Authentication::isAuthenticated)
-                .map(Authentication::getPrincipal)
-                .map(User.class::cast);
+        Optional<User> user = Optional.ofNullable(SecurityContextHolder.getContext())
+                .map(securityContext -> securityContext.getAuthentication())
+                .filter(authentication -> authentication.isAuthenticated())
+                .map(authentication -> (User) authentication.getPrincipal());
+
+        return user;
     }
 }

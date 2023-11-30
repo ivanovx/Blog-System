@@ -2,6 +2,7 @@ package org.ivanovx.bloggable.entity;
 
 import lombok.Data;
 
+import java.util.UUID;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,8 +15,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @CreatedDate
     private LocalDateTime created;

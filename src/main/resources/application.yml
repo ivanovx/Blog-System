@@ -9,3 +9,11 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: false
+
+blogy:
+  admin:
+    mail: me@ivanov.pro
+    username: ivanovx
+    password: ivanovx
+  default:
+    category: Uncategorized
