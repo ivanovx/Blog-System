@@ -9,18 +9,17 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: false
-
-hibernate:
-  search:
-    backend:
-      directory:
-        root: some/filesystem/path
+    properties:
+      hibernate:
+        search:
+          backend:
+            directory.root: ./data/index
 
 blogy:
   admin:
-    mail: me@ivanov.pro
     username: ivanovx
     password: ivanovx
+    mail: me@ivanov.pro
   default:
     category: Uncategorized
     settings:

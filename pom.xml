@@ -19,9 +19,6 @@
 
     <properties>
 		<java.version>17</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 	
 	<dependencies>
@@ -36,6 +33,10 @@
 				<exclusion>
 					<groupId>org.hibernate.orm</groupId>
 					<artifactId>hibernate-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.zaxxer</groupId>
+					<artifactId>HikariCP</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -75,6 +76,10 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>6.2.2.Final</version>
 		</dependency>-->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.hibernate.search</groupId>
 			<artifactId>hibernate-search-mapper-orm-jakarta</artifactId>
@@ -122,6 +127,10 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
