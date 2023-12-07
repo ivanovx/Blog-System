@@ -3,11 +3,12 @@ package org.blogy.repository;
 import java.util.List;
 import java.util.Optional;
 
-import org.blogy.entity.Article;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+
+import org.blogy.entity.Article;
 
 public interface ArticleRepository extends PagingAndSortingRepository<Article, Long>, CrudRepository<Article, Long> {
 

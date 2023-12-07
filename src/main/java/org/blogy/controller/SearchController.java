@@ -24,7 +24,7 @@ public class SearchController {
     @ResponseBody
     public List<Article> search(@ModelAttribute SearchRequest search) {
         SearchResult<Article> result = searchSession.search(Article.class)
-                .where( f -> f.match().fields( "content" ).matching( search.getValue() ) )
+                .where( f -> f.match().fields( "content" ).matching(search.getValue()))
                 .fetch( 20 );
 
         return result.hits();
