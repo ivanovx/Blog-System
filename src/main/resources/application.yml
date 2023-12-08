@@ -9,11 +9,6 @@ spring:
     generate-ddl: true
     show-sql: true
     open-in-view: false
-    properties:
-      hibernate:
-        search:
-          backend:
-            directory.root: ./data/index
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 blogy:

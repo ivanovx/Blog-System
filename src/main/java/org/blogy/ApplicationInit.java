@@ -7,8 +7,6 @@ import org.blogy.entity.User;
 import org.blogy.service.CategoryService;
 import org.blogy.service.SettingService;
 import org.blogy.service.UserService;
-import org.hibernate.search.mapper.orm.massindexing.MassIndexer;
-import org.hibernate.search.mapper.orm.session.SearchSession;
 import org.springframework.stereotype.Component;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.ApplicationArguments;
@@ -18,9 +16,6 @@ import java.util.Map;
 
 @Component
 public class ApplicationInit implements ApplicationRunner {
-
-    private final SearchSession searchSession;
-
     private final UserService userService;
 
     private final SettingService settingService;
@@ -48,8 +43,7 @@ public class ApplicationInit implements ApplicationRunner {
     @Value("${blogy.default.settings.description}")
     private String defaultDescription;
 
-    public ApplicationInit(SearchSession searchSession, UserService userService, SettingService settingService, CategoryService categoryService) {
-        this.searchSession = searchSession;
+    public ApplicationInit(UserService userService, SettingService settingService, CategoryService categoryService) {
         this.userService = userService;
         this.settingService = settingService;
         this.categoryService = categoryService;
@@ -57,8 +51,6 @@ public class ApplicationInit implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        initIndexer();
-
         if (!userService.haveAdminUser()) {
             userService.createUser(new User(adminEmail, adminUsername, adminPassword, Role.ADMIN));
         }
@@ -74,11 +66,5 @@ public class ApplicationInit implements ApplicationRunner {
         if (categoryService.count() == 0) {
             categoryService.createCategory(new Category(defaultCategory));
         }
-    }
-
-    private void initIndexer() throws InterruptedException {
-        MassIndexer indexer = searchSession.massIndexer(Article.class); //.threadsToLoadObjects();
-
-        indexer.startAndWait();
     }
 }
