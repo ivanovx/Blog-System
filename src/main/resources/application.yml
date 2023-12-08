@@ -13,12 +13,12 @@ spring:
 
 blogy:
   admin:
-    username: ivanovx
-    password: ivanovx
-    mail: me@ivanov.pro
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin}
+    mail: ${ADMIN_EMAIL:admin@admin.com}
   default:
     category: Uncategorized
     settings:
-      title: Sample blog title
-      description: Sample blog description
-      url: http://localhost:8080
+      title: ${BLOGY_TITLE:Sample blog title}
+      description: ${BLOGY_DESCRIPTION:Sample blog description}
+      url: ${BLOGY_URL:http://localhost:8080}
