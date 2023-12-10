@@ -72,14 +72,15 @@
 			<artifactId>rome</artifactId>
 			<version>1.18.0</version>
 		</dependency>
-	<!--	<dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+		</dependency>
+		<!--
+		<dependency>
 			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>6.2.2.Final</version>
-		</dependency>-->
-	<!--	<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.search</groupId>
@@ -90,7 +91,8 @@
 			<groupId>org.hibernate.search</groupId>
 			<artifactId>hibernate-search-backend-lucene</artifactId>
 			<version>6.2.2.Final</version>
-		</dependency>-->
+		</dependency>
+		-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
