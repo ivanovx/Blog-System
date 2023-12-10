@@ -11,7 +11,7 @@ import org.blogy.entity.User;
 public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByUsername(String username);
 
-    List<User> findAllByRole(Role role);
+   // List<User> findAllByRole(Role role);
 
     boolean existsAllByRole(Role role);
 }

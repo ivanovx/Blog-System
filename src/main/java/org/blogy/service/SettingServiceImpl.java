@@ -24,12 +24,9 @@ public class SettingServiceImpl implements SettingService {
         return settingRepository.count();
     }
 
+    @Transactional(readOnly = true)
     public List<Setting> getSettings() {
         return settingRepository.findAll();
-    }
-
-    public Map<String, String> settingsMap() {
-        return getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
     }
 
     @Transactional(readOnly = true)
@@ -42,17 +39,21 @@ public class SettingServiceImpl implements SettingService {
         return settingRepository.findByName(name).orElseThrow();
     }
 
+    public Map<String, String> settingsMap() {
+        return getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
+    }
+
     public Setting createSetting(String name, String value) {
         Setting setting = new Setting();
 
         setting.setName(name);
         setting.setValue(value);
 
-        return this.settingRepository.save(setting);
+        return settingRepository.save(setting);
     }
 
     public Setting updateSetting(long id, String value) {
-        Setting setting = this.getSetting(id);
+        Setting setting = getSetting(id);
 
         setting.setValue(value);
 

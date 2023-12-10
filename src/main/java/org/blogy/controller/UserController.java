@@ -1,11 +1,11 @@
 package org.blogy.controller;
 
-import org.blogy.request.LoginRequest;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.blogy.request.LoginRequest;
 
 @Controller
 @RequestMapping("/user")

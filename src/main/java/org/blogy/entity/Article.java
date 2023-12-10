@@ -1,10 +1,9 @@
 package org.blogy.entity;
 
-import jakarta.persistence.*;
-
 import lombok.Data;
 import java.util.Set;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 
 import org.springframework.data.annotation.CreatedBy;

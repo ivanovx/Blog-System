@@ -30,16 +30,23 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     public User getUser(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User with %s not found".formatted(username)));
+        return userRepository
+                .findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User with %s not found".formatted(username)));
     }
+
+    //@Transactional(readOnly = true)
+    //public boolean haveAdminUser() {
+       // return userRepository.findAllByRole(Role.ADMIN).stream().count() > 0;
+    //}
 
     @Transactional(readOnly = true)
     public boolean haveAdminUser() {
-        return userRepository.findAllByRole(Role.ADMIN).stream().count() > 0;
+        return userRepository.existsAllByRole(Role.ADMIN);
     }
 
     public User createUser(User user) {
-        String password = this.passwordEncoder.encode(user.getPassword());
+        String password = passwordEncoder.encode(user.getPassword());
 
         user.setPassword(password);
 
@@ -47,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User updateUser(User user) {
-        String password = this.passwordEncoder.encode(user.getPassword());
+        String password = passwordEncoder.encode(user.getPassword());
 
         user.setPassword(password);
         user.setModified(LocalDateTime.now());
