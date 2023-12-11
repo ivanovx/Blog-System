@@ -10,7 +10,7 @@ import jakarta.persistence.Column;
 @Entity
 @Table(name="settings")
 public class Setting extends BaseEntity {
-    @Column
+    @Column(unique = true, updatable = false)
     private String name;
 
     @Column

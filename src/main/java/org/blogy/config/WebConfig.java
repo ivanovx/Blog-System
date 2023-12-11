@@ -20,14 +20,12 @@ public class WebConfig {
     }
 
     @Bean
-    public AsyncTaskExecutor applicationTaskExecutor() {
+    public AsyncTaskExecutor taskExecutor() {
         return new TaskExecutorAdapter(Executors.newVirtualThreadPerTaskExecutor());
     }
 
     @Bean
     public TomcatProtocolHandlerCustomizer<?> protocolHandler() {
-        return protocolHandler -> {
-            protocolHandler.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
-        };
+        return protocolHandler -> protocolHandler.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
     }
 }

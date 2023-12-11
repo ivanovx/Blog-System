@@ -1,5 +1,7 @@
 package org.blogy.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
@@ -61,12 +63,18 @@ public class ArticleServiceImpl implements ArticleService {
     public Article createArticle(ArticleRequest model) {
         Category category = categoryService.getCategory(model.getCategory());
 
+        String slug = SlugGenerator.toSlug(model.getTitle());
+
+        if (articleRepository.existsBySlug(slug)) {
+            slug = "-" + slug.concat(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        }
+
         Article article = new Article();
 
         article.setCategory(category);
         article.setTitle(model.getTitle());
         article.setContent(model.getContent());
-        article.setSlug(SlugGenerator.toSlug(model.getTitle()));
+        article.setSlug(slug);
 
         Set<String> keywords = Arrays.stream(model.getKeywords().split(",")).collect(Collectors.toSet());
 
@@ -87,5 +95,9 @@ public class ArticleServiceImpl implements ArticleService {
         article.setKeywords(keywords);
 
         return articleRepository.save(article);
+    }
+
+    public void delete(long id) {
+        articleRepository.deleteById(id);
     }
 }

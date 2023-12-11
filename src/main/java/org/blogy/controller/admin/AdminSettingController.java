@@ -20,9 +20,9 @@ public class AdminSettingController {
 
     @GetMapping
     public String index(Model model) {
-        List<Setting> settings = settingService.getSettings();
+       // List<Setting> settings = settingService.getSettings();
 
-        model.addAttribute("allSettings", settings);
+      //  model.addAttribute("allSettings", settings);
 
         return "admin/settings";
     }

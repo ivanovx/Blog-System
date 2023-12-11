@@ -24,4 +24,6 @@ public interface ArticleService {
     Article createArticle(ArticleRequest model);
 
     Article updateArticle(long id, ArticleRequest model);
+
+    void delete(long id);
 }

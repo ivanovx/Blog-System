@@ -2,14 +2,15 @@ package org.blogy.controller.admin;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+
 import org.blogy.entity.Article;
 import org.blogy.entity.Category;
 import org.blogy.request.ArticleRequest;
 import org.blogy.service.ArticleService;
 import org.blogy.service.CategoryService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/articles")
@@ -46,7 +47,7 @@ public class AdminArticleController {
     public String create(@ModelAttribute ArticleRequest request) {
         articleService.createArticle(request);
 
-        return "redirect:/admin";
+        return "redirect:/admin/articles";
     }
 
     @GetMapping("/update/{id}")
@@ -67,6 +68,13 @@ public class AdminArticleController {
     public String update(@PathVariable long id, @ModelAttribute ArticleRequest articleModel) {
         articleService.updateArticle(id, articleModel);
 
-        return "redirect:/admin";
+        return "redirect:/admin/articles";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+        articleService.delete(id);
+
+        return "redirect:/admin/articles";
     }
 }

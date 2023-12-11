@@ -52,8 +52,8 @@ public class SettingServiceImpl implements SettingService {
         return settingRepository.save(setting);
     }
 
-    public Setting updateSetting(long id, String value) {
-        Setting setting = getSetting(id);
+    public Setting updateSetting(String name, String value) {
+        Setting setting = getSetting(name);
 
         setting.setValue(value);
 

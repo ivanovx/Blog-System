@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "articles")
 @EntityListeners(AuditingEntityListener.class)
 public class Article extends BaseEntity {
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String slug;
 
     @Column(nullable = false)

@@ -23,4 +23,6 @@ public interface ArticleRepository extends PagingAndSortingRepository<Article, L
     Optional<Article> findById(long id);
 
     Optional<Article> findBySlug(String slug);
+
+    boolean existsBySlug(String slug);
 }

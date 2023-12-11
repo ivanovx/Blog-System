@@ -27,8 +27,8 @@ public class RssFeedView extends AbstractRssFeedView {
 
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
-        feed.setTitle(settingService.getSetting("title").getValue());
         feed.setLink(settingService.getSetting("url").getValue());
+        feed.setTitle(settingService.getSetting("title").getValue());
         feed.setDescription(settingService.getSetting("description").getValue());
     }
 

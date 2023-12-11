@@ -28,12 +28,6 @@ public class ArchiveServiceImpl implements ArchiveService {
         return getAllArticles()
                 .filter(article -> YearMonth.from(article.getCreated()).compareTo(yearMonth) == 0)
                 .toList();
-
-        /*return articleRepository
-                .findAll()
-                .stream()
-                .filter(article -> YearMonth.from(article.getCreated()).compareTo(yearMonth) == 0)
-                .toList();*/
     }
 
     public Map<YearMonth, Long> create() {
@@ -42,17 +36,9 @@ public class ArchiveServiceImpl implements ArchiveService {
                         HashMap::new,
                         Collectors.counting()
                 ));
-
-        /*return articleRepository
-                .findAll()
-                .stream()
-                .collect(Collectors.groupingBy(article -> YearMonth.from(article.getCreated()),
-                        HashMap::new,
-                        Collectors.counting()
-                ));*/
     }
 
     private Stream<Article> getAllArticles() {
-        return articleRepository.findAll().stream();
+        return articleRepository.findByOrderByCreatedDesc().stream();
     }
 }

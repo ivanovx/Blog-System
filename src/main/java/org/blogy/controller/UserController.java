@@ -10,7 +10,6 @@ import org.blogy.request.LoginRequest;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
     @GetMapping(value = "/login")
     public String login(Model model) {
         model.addAttribute("user", new LoginRequest());
