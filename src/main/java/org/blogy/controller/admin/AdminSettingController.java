@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/admin/settings")
 public class AdminSettingController {
@@ -18,19 +16,19 @@ public class AdminSettingController {
         this.settingService = settingService;
     }
 
-    @GetMapping
-    public String index(Model model) {
-       // List<Setting> settings = settingService.getSettings();
+    @GetMapping("/{name}")
+    public String getSetting(@PathVariable String name, Model model) {
+        Setting setting = settingService.getSetting(name);
 
-      //  model.addAttribute("allSettings", settings);
+        model.addAttribute("setting", setting);
 
-        return "admin/settings";
+        return "admin/settings/index";
     }
 
-   /* @PostMapping("/{id}")
-    public String updateSetting(@PathVariable long id, @RequestParam("value") String value) {
-        settingService.updateSetting(id, value);
+    @PostMapping("/{name}")
+    public String updateSetting(@PathVariable String name, @ModelAttribute Setting setting) {
+        settingService.updateSetting(name, setting.getValue());
 
-        return "redirect:/admin/settings";
-    }*/
+        return "redirect:/admin";
+    }
 }

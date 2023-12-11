@@ -16,7 +16,7 @@ public interface SettingService {
 
     Setting getSetting(String name);
 
-    Setting createSetting(String name, String value);
+    Setting createSetting(Setting setting);
 
     Setting updateSetting(String name, String value);
 }

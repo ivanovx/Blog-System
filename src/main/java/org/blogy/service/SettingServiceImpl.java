@@ -43,12 +43,7 @@ public class SettingServiceImpl implements SettingService {
         return getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
     }
 
-    public Setting createSetting(String name, String value) {
-        Setting setting = new Setting();
-
-        setting.setName(name);
-        setting.setValue(value);
-
+    public Setting createSetting(Setting setting) {
         return settingRepository.save(setting);
     }
 

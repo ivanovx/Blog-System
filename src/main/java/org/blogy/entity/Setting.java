@@ -15,4 +15,11 @@ public class Setting extends BaseEntity {
 
     @Column
     private String value;
+
+    public Setting() { }
+
+    public Setting(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
 }

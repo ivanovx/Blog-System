@@ -12,7 +12,7 @@ import org.blogy.entity.Article;
 import org.blogy.service.ArticleService;
 
 @Controller
-@RequestMapping(value = {"/", "/articles" })
+@RequestMapping("/")
 public class HomeController {
     private final ArticleService articleService;
 
@@ -29,7 +29,7 @@ public class HomeController {
         return "home/index";
     }
 
-    @GetMapping("/{slug}")
+    @GetMapping("/articles/{slug}")
     public String article(@PathVariable String slug, Model model) {
         Article article = articleService.getArticle(slug);
 

@@ -1,12 +1,12 @@
 .header-img {
-    background-image: url("/images/header.jpg");
+    background: transparent url("/images/header.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #373b3e !important;
 }
 
-.logout-form {
+.inline-form {
     display: inline;
 }
 

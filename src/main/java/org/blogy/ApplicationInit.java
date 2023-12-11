@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import org.blogy.entity.Role;
 import org.blogy.entity.User;
+import org.blogy.entity.Setting;
 import org.blogy.entity.Category;
 import org.blogy.service.UserService;
 import org.blogy.service.SettingService;
@@ -59,7 +60,11 @@ public class ApplicationInit implements ApplicationRunner {
                 Map.entry("url", defaultUrl),
                 Map.entry("title", defaultTitle),
                 Map.entry("description", defaultDescription)
-            ).forEach((name, value) -> settingService.createSetting(name, value));
+            ).forEach((name, value) -> {
+                Setting setting = new Setting(name, value);
+
+                settingService.createSetting(setting);
+            });
         }
 
         if (categoryService.count() == 0) {
