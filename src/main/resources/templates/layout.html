@@ -47,44 +47,51 @@
                     </a>
                 </nav>
             </div>
-        </div>
-        <main class="container mb-4">
-            <div class="p-4 p-md-5 mb-4 rounded text-bg-dark header-img">
-                <div class="col-md-8 px-0">
-                    <h1 class="display-4 fst-italic" th:text='${settings.get("title")}'></h1>
-                    <p class="lead my-3" th:text='${settings.get("description")}'></p>
+            <main class="mb-4">
+                <div class="p-5 p-md-5 mb-4 rounded text-bg-dark header-img">
+                    <div class="col-md-8 px-0">
+                        <h1 class="display-4 fst-italic" th:text='${settings.get("title")}'></h1>
+                        <p class="lead my-3" th:text='${settings.get("description")}'></p>
+                    </div>
                 </div>
-            </div>
-            <div class="row g-5">
-                <div class="col-md-8">
-                    <section layout:fragment="content"></section>
-                </div>
-                <div class="col-md-4">
-                    <div class="position-sticky">
-                        <div class="p-4">
-                            <h4 class="fst-italic">Archive</h4>
-                            <ol class="list-unstyled mb-0">
-                                <li th:each="item: ${archive}">
-                                    <a th:href="@{/archive/{month}/{year}(month=${item.key.month.value}, year=${item.key.year})}"
-                                       th:text="${#temporals.format(item.key)}">
-                                    </a>
-                                    <span th:text="${item.value}"></span>
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="fst-italic">Elsewhere</h4>
-                            <ol class="list-unstyled">
-                                <li><a href="https://github.com/ivanovx">GitHub</a></li>
-                                <li><a href="https://www.facebook.com/ivanovdotpro">Facebook</a></li>
-                            </ol>
+                <div class="row g-5">
+                    <div class="col-md-8">
+                        <section layout:fragment="content"></section>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="position-sticky">
+                            <div class="p-4">
+                                <h4 class="fst-italic">Archive</h4>
+                                <ol class="list-unstyled mb-0">
+                                    <li th:each="item: ${archive}">
+                                        <a th:href="@{/archive/{month}/{year}(month=${item.key.month.value}, year=${item.key.year})}"
+                                           th:text="${#temporals.format(item.key)}">
+                                        </a>
+                                        <span th:text="${item.value}"></span>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="fst-italic">Elsewhere</h4>
+                                <ol class="list-unstyled">
+                                    <li><a href="https://github.com/ivanovx">GitHub</a></li>
+                                    <li><a href="https://www.facebook.com/ivanovdotpro">Facebook</a></li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <footer class="blog-footer">
-            <p>(c) 2025 <a href="https://www.ivanov.pro">Ivan Ivanov</a>.</p>
-        </footer>
+            </main>
+            <footer class="blog-footer">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        (c) 2023 <a href="https://www.ivanov.pro" target="_blank" class="btn btn-link">Ivan Ivanov</a>.
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a href="https://github.com/ivanovx/blogy" target="_blank" class="btn btn-link">Open Source Project</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>
