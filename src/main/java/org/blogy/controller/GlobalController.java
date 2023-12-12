@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import org.blogy.entity.Category;
+import org.blogy.service.SettingService;
 import org.blogy.service.ArchiveService;
 import org.blogy.service.CategoryService;
-import org.blogy.service.SettingService;
 
 @ControllerAdvice
 public class GlobalController {

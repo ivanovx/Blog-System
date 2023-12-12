@@ -1,5 +1,6 @@
 package org.blogy.util;
 
+import java.net.URL;
 import java.util.Map;
 import java.util.List;
 

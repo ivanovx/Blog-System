@@ -13,7 +13,7 @@ public class Setting extends BaseEntity {
     @Column(unique = true, updatable = false)
     private String name;
 
-    @Column
+    @Column(length = 512)
     private String value;
 
     public Setting() { }
