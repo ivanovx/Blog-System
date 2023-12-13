@@ -22,20 +22,20 @@ public class ArchiveServiceImpl implements ArchiveService {
         this.articleRepository = articleRepository;
     }
 
+    public Map<YearMonth, Long> get() {
+        return getAllArticles()
+                .collect(Collectors.groupingBy(article -> YearMonth.from(article.getCreated()),
+                        HashMap::new,
+                        Collectors.counting()
+                ));
+    }
+
     public List<Article> get(int month, int year) {
         YearMonth yearMonth = YearMonth.of(year, month);
 
         return getAllArticles()
                 .filter(article -> YearMonth.from(article.getCreated()).compareTo(yearMonth) == 0)
                 .toList();
-    }
-
-    public Map<YearMonth, Long> create() {
-        return getAllArticles()
-                .collect(Collectors.groupingBy(article -> YearMonth.from(article.getCreated()),
-                        HashMap::new,
-                        Collectors.counting()
-                ));
     }
 
     private Stream<Article> getAllArticles() {

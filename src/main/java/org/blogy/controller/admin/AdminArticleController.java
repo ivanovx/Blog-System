@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 
 import org.blogy.entity.Article;
 import org.blogy.entity.Category;

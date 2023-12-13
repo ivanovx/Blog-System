@@ -7,7 +7,7 @@ import java.time.YearMonth;
 import org.blogy.entity.Article;
 
 public interface ArchiveService {
-    List<Article> get(int month, int year);
+    Map<YearMonth, Long> get();
 
-    Map<YearMonth, Long> create();
+    List<Article> get(int month, int year);
 }

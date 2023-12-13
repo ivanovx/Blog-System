@@ -38,6 +38,6 @@ public class GlobalController {
 
     @ModelAttribute("archive")
     public Map<YearMonth, Long> archive() {
-        return archiveService.create();
+        return archiveService.get();
     }
 }

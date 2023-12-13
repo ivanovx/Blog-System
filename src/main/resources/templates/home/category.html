@@ -1,26 +1,29 @@
-<!DOCTYPE HTML>
 <html
         xmlns:th="https://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout.html}">
-<head>
-  <title>Home</title>
-</head>
-<body>
-<section layout:fragment="content">
-  <div class="row mb-2">
-    <div th:each="article: ${articles}" class="col-md-12">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary" th:text="${article.category.name}"></strong>
-          <a th:href="@{/articles/{slug}(slug=${article.slug})}" class="link">
-            <h3 class="mb-0" th:text="${article.title}"></h3>
-          </a>
-          <div class="mb-1 text-body-secondary" th:text="${#temporals.format(article.created, 'dd MMMM yyyy')}"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</body>
+    <head>
+        <title>Category</title>
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <div class="row mb-2">
+                <article class="col-md-12" th:each="article: ${page.content}">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary" th:text="${article.category.name}" />
+                            <a
+                                    class="display-6 mb-1 link-offset-2 link-underline link-underline-opacity-0"
+                                    th:href="@{/articles/{slug}(slug=${article.slug})}"
+                                    th:text="${article.title}" />
+                            <time
+                                    class="mb-1 text-body-secondary"
+                                    th:datetime="${article.created}"
+                                    th:text="${#temporals.format(article.created, 'dd MMMM yyyy')}" />
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </body>
 </html>

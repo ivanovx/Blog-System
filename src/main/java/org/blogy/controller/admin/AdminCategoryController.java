@@ -2,11 +2,12 @@ package org.blogy.controller.admin;
 
 import java.util.List;
 
-import org.blogy.entity.Category;
-import org.blogy.service.CategoryService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import org.blogy.entity.Category;
+import org.blogy.service.CategoryService;
 
 @Controller
 @RequestMapping("/admin/categories")

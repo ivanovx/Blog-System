@@ -1,7 +1,5 @@
-<!DOCTYPE HTML>
 <html
         xmlns:th="http://www.thymeleaf.org"
-        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout.html}">
     <head>
@@ -9,35 +7,30 @@
     </head>
     <body>
         <section layout:fragment="content">
-           <!--
-                Logged user: <span sec:authentication="name"></span>
-                Roles: <span sec:authentication="principal.authorities"></span>
-            --->
-
             <ul class="list-group mb-3">
                 <li class="list-group-item active">Content</li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <a th:href="@{/admin/articles}" class="list-group-item-action">Articles</a>
+                        <a class="list-group-item-action" href="/admin/articles">Articles</a>
                     </div>
-                    <span class="badge bg-primary rounded-pill" th:text="${articlesCount}"></span>
+                    <span class="badge bg-primary rounded-pill" th:text="${articlesCount}" />
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <a th:href="@{/admin/categories}" class="list-group-item-action">Categories</a>
+                        <a class="list-group-item-action" href="admin/categories">Categories</a>
                     </div>
-                    <span class="badge bg-primary rounded-pill" th:text="${categoriesCount}"></span>
+                    <span class="badge bg-primary rounded-pill" th:text="${categoriesCount}" />
                 </li>
             </ul>
 
             <ul class="list-group">
                 <li class="list-group-item active">Settings</li>
-               <li th:each="setting : ${settings}" class="list-group-item">
+                <li th:each="setting : ${settings}" class="list-group-item">
                     <a
+                            class="list-group-item-action"
                             th:text="${setting.key}"
                             th:href="@{/admin/settings/{name}(name=${setting.key})}"
-                            class="list-group-item-action">
-                    </a>
+                    />
                 </li>
             </ul>
         </section>

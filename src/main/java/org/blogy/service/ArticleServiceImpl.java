@@ -66,7 +66,7 @@ public class ArticleServiceImpl implements ArticleService {
         String slug = SlugGenerator.toSlug(model.getTitle());
 
         if (articleRepository.existsBySlug(slug)) {
-            slug = "-" + slug.concat(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            slug =  slug.concat("-" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         }
 
         Article article = new Article();

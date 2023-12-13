@@ -1,11 +1,11 @@
 package org.blogy.controller.admin;
 
-import org.blogy.entity.Setting;
-import org.blogy.service.SettingService;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+
+import org.blogy.entity.Setting;
+import org.blogy.service.SettingService;
 
 @Controller
 @RequestMapping("/admin/settings")
