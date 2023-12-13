@@ -11,4 +11,6 @@ public interface SettingRepository extends CrudRepository<Setting, Long> {
     List<Setting> findAll();
 
     Optional<Setting> findByName(String name);
+
+    boolean existsByName(String name);
 }
