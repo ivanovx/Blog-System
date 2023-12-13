@@ -21,9 +21,9 @@ public interface ArticleService {
 
     Article getArticle(String slug);
 
-    Article createArticle(ArticleForm form);
+    Article createArticle(ArticleForm articleForm);
 
-    Article updateArticle(long id, ArticleForm form);
+    Article updateArticle(long id, ArticleForm articleForm);
 
     void delete(long id);
 }

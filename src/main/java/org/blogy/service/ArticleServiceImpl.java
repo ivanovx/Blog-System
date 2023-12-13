@@ -1,8 +1,6 @@
 package org.blogy.service;
 
 import java.util.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,7 +61,7 @@ public class ArticleServiceImpl implements ArticleService {
         String slug = SlugGenerator.toSlug(form.getTitle());
 
         if (articleRepository.existsBySlug(slug)) {
-            slug =  slug.concat("-" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            slug = SlugGenerator.toSlug(form.getTitle(), true);
         }
 
         Article article = new Article();
