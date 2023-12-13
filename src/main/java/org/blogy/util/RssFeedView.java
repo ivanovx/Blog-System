@@ -40,7 +40,7 @@ public class RssFeedView extends AbstractRssFeedView {
                     Item entry = new Item();
                     entry.setTitle(article.getTitle());
                     entry.setAuthor(article.getUser().getUsername());
-                    entry.setLink("%s/articles/%s".formatted(settingService.getSetting("url"), article.getSlug()));
+                    entry.setLink("%s/articles/%s".formatted(settingService.getSetting("url").getValue(), article.getSlug()));
 
                     return entry;
                 })
