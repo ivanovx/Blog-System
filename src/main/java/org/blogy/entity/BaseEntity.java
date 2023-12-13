@@ -18,6 +18,7 @@ public abstract class BaseEntity implements Serializable {
     private Long id;
 
     @CreatedDate
+    @Column(nullable = false, updatable = false)
     private LocalDateTime created;
 
     @LastModifiedDate

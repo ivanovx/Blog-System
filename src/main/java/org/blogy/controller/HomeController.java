@@ -21,7 +21,7 @@ public class HomeController {
     }
 
     @GetMapping
-    public String articles(Pageable pageable, Model model) {
+    public String articles(Model model, Pageable pageable) {
         Page<Article> page = articleService.getArticles(pageable);
 
         model.addAttribute("page", page);

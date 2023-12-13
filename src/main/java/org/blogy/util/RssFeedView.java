@@ -1,6 +1,5 @@
 package org.blogy.util;
 
-import java.net.URL;
 import java.util.Map;
 import java.util.List;
 
@@ -39,9 +38,9 @@ public class RssFeedView extends AbstractRssFeedView {
                 .stream()
                 .map(article -> {
                     Item entry = new Item();
-
                     entry.setTitle(article.getTitle());
                     entry.setAuthor(article.getUser().getUsername());
+                    entry.setLink("%s/articles/%s".formatted(settingService.getSetting("url"), article.getSlug()));
 
                     return entry;
                 })
