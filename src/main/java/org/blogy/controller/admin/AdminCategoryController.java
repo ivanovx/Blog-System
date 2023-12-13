@@ -38,7 +38,7 @@ public class AdminCategoryController {
     public String create(@ModelAttribute Category category) {
         categoryService.createCategory(category);
 
-        return "redirect:/admin";
+        return "redirect:/admin/categories";
     }
 
     @GetMapping("/update/{id}")
@@ -54,6 +54,6 @@ public class AdminCategoryController {
     public String update(@PathVariable long id, @ModelAttribute Category category) {
         categoryService.updateCategory(id, category.getName());
 
-        return "redirect:/admin";
+        return "redirect:/admin/categories";
     }
 }

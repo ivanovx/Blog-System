@@ -8,7 +8,7 @@
     <body>
         <section layout:fragment="content">
             <div class="row mb-2">
-                <article class="col-md-12" th:each="article: ${page.content}">
+                <article class="col-md-12" th:each="article: ${articles}">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
                             <strong class="d-inline-block mb-2 text-primary" th:text="${article.category.name}" />
