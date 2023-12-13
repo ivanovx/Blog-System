@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Collection;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +16,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
-    @Email
     @Column(unique = true, nullable = false)
     private String email;
 

@@ -2,6 +2,7 @@ package org.blogy.controller.admin;
 
 import java.util.List;
 
+import org.blogy.form.ArticleForm;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,6 @@ import org.springframework.validation.BindingResult;
 
 import org.blogy.entity.Article;
 import org.blogy.entity.Category;
-import org.blogy.request.ArticleRequest;
 import org.blogy.service.ArticleService;
 import org.blogy.service.CategoryService;
 
@@ -39,14 +39,14 @@ public class AdminArticleController {
         List<Category> categories = categoryService.getCategories();
 
         model.addAttribute("categories", categories);
-        model.addAttribute("article", new ArticleRequest());
+        model.addAttribute("articleForm", new ArticleForm());
 
         return "admin/articles/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute ArticleRequest request) {
-        articleService.createArticle(request);
+    public String create(@ModelAttribute ArticleForm articleForm) {
+        articleService.createArticle(articleForm);
 
         return "redirect:/admin/articles";
     }
@@ -56,18 +56,18 @@ public class AdminArticleController {
         Article article = articleService.getArticle(id);
         List<Category> categories = categoryService.getCategories();
 
-        ArticleRequest articleModel = ArticleRequest.of(article);
+        ArticleForm articleForm = ArticleForm.from(article);
 
         model.addAttribute("articleId", article.getId());
+        model.addAttribute("articleForm", articleForm);
         model.addAttribute("categories", categories);
-        model.addAttribute("article", articleModel);
 
         return "admin/articles/update";
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable long id, @ModelAttribute ArticleRequest articleModel) {
-        articleService.updateArticle(id, articleModel);
+    public String update(@PathVariable long id, @ModelAttribute ArticleForm articleForm) {
+        articleService.updateArticle(id, articleForm);
 
         return "redirect:/admin/articles";
     }

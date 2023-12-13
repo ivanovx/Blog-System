@@ -39,7 +39,7 @@ public class SlugGenerator {
             {"я", "ya"}
     };
 
-    private static final Map<String, String> characters = Arrays.stream(chars).collect(Collectors.toMap(e -> e[0], e -> e[1]));
+    private static final Map<Character, String> characters = Arrays.stream(chars).collect(Collectors.toMap(e -> e[0].toCharArray()[0], e -> e[1]));
 
     public static String toSlug(String uglyString) {
         char ugly[] = uglyString.toLowerCase().toCharArray();

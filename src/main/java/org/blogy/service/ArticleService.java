@@ -3,10 +3,10 @@ package org.blogy.service;
 import java.util.List;
 
 import org.blogy.entity.Article;
+import org.blogy.form.ArticleForm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import org.blogy.request.ArticleRequest;
 
 public interface ArticleService {
     long count();
@@ -15,15 +15,15 @@ public interface ArticleService {
 
     Page<Article> getArticles(Pageable pageable);
 
-    List<Article> getArticlesByCategory(String categoryName);
+    List<Article> getArticles(String categoryName);
 
     Article getArticle(long id);
 
     Article getArticle(String slug);
 
-    Article createArticle(ArticleRequest model);
+    Article createArticle(ArticleForm form);
 
-    Article updateArticle(long id, ArticleRequest model);
+    Article updateArticle(long id, ArticleForm form);
 
     void delete(long id);
 }

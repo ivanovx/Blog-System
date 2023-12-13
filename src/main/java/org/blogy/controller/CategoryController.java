@@ -22,7 +22,7 @@ public class CategoryController {
 
     @GetMapping("/{name}")
     public String index(@PathVariable String name, Model model) {
-        List<Article> articles = articleService.getArticlesByCategory(name);
+        List<Article> articles = articleService.getArticles(name);
 
         model.addAttribute("articles", articles);
 

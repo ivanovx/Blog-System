@@ -1,10 +1,8 @@
 package org.blogy.entity;
 
 import lombok.Data;
-import java.util.Set;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -23,9 +21,9 @@ public class Article extends BaseEntity {
     @Column(nullable = false, columnDefinition="TEXT")
     private String content;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name="article_keywords")
-    private Set<@Pattern(regexp = "^[\\w\\s\\+-]+$") String> keywords;
+   // @ElementCollection(fetch = FetchType.EAGER)
+  //  @CollectionTable(name="article_keywords")
+  //  private Set<@Pattern(regexp = "^[\\w\\s\\+-]+$") String> keywords;
 
     @ManyToOne
     private Category category;

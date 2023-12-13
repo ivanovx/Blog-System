@@ -1,33 +1,30 @@
 package org.blogy.service;
 
+import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.time.LocalDateTime;
-import java.util.stream.Collectors;
 
-import org.blogy.entity.Article;
-import org.blogy.entity.Category;
-import org.blogy.request.ArticleRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.blogy.entity.Article;
+import org.blogy.entity.Category;
+import org.blogy.form.ArticleForm;
 import org.blogy.util.SlugGenerator;
 import org.blogy.repository.ArticleRepository;
 
 @Service
 @Transactional
 public class ArticleServiceImpl implements ArticleService {
-    private final ArticleRepository articleRepository;
-
     private final CategoryService categoryService;
 
-    public ArticleServiceImpl(ArticleRepository articleRepository, CategoryService categoryService) {
-        this.articleRepository = articleRepository;
+    private final ArticleRepository articleRepository;
+
+    public ArticleServiceImpl(CategoryService categoryService, ArticleRepository articleRepository) {
         this.categoryService = categoryService;
+        this.articleRepository = articleRepository;
     }
 
     @Transactional(readOnly = true)
@@ -46,7 +43,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Transactional(readOnly = true)
-    public List<Article> getArticlesByCategory(String categoryName) {
+    public List<Article> getArticles(String categoryName) {
         return articleRepository.findAllByCategoryName(categoryName);
     }
 
@@ -60,10 +57,10 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findBySlug(slug).orElseThrow();
     }
 
-    public Article createArticle(ArticleRequest model) {
-        Category category = categoryService.getCategory(model.getCategory());
+    public Article createArticle(ArticleForm form) {
+        Category category = categoryService.getCategory(form.getCategoryId());
 
-        String slug = SlugGenerator.toSlug(model.getTitle());
+        String slug = SlugGenerator.toSlug(form.getTitle());
 
         if (articleRepository.existsBySlug(slug)) {
             slug =  slug.concat("-" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
@@ -71,28 +68,21 @@ public class ArticleServiceImpl implements ArticleService {
 
         Article article = new Article();
 
-        article.setCategory(category);
-        article.setTitle(model.getTitle());
-        article.setContent(model.getContent());
         article.setSlug(slug);
-
-        Set<String> keywords = Arrays.stream(model.getKeywords().split(",")).collect(Collectors.toSet());
-
-        article.setKeywords(keywords);
+        article.setCategory(category);
+        article.setTitle(form.getTitle());
+        article.setContent(form.getContent());
 
         return articleRepository.save(article);
     }
 
-    public Article updateArticle(long id, ArticleRequest model) {
+    public Article updateArticle(long id, ArticleForm form) {
         Article article = getArticle(id);
-        Category category = categoryService.getCategory(model.getCategory());
-        Set<String> keywords = Arrays.stream(model.getKeywords().split(",")).collect(Collectors.toSet());
+        Category category = categoryService.getCategory(form.getCategoryId());
 
         article.setCategory(category);
-        article.setContent(model.getContent());
-        article.setTitle(model.getTitle());
-        article.setModified(LocalDateTime.now());
-        article.setKeywords(keywords);
+        article.setTitle(form.getTitle());
+        article.setContent(form.getContent());
 
         return articleRepository.save(article);
     }
