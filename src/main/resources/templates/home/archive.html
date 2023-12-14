@@ -11,15 +11,21 @@
                 <article class="col-md-12" th:each="article: ${articles}">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-primary" th:text="${article.category.name}" />
-                            <a
-                                    class="display-6 mb-1 link-offset-2 link-underline link-underline-opacity-0"
-                                    th:href="@{/articles/{slug}(slug=${article.slug})}"
-                                    th:text="${article.title}" />
-                            <time
-                                    class="mb-1 text-body-secondary"
-                                    th:datetime="${article.created}"
-                                    th:text="${#temporals.format(article.created, 'dd MMMM yyyy')}" />
+                            <a class="display-6 mb-2 link-offset-2 link-underline link-underline-opacity-0" th:href="@{/articles/{slug}(slug=${article.slug})}" th:text="${article.title}" />
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <i class="bi bi-calendar"></i>
+                                    <time class="text-body-secondary" th:datetime="${article.created}" th:text="${#temporals.format(article.created, 'dd MMMM yyyy')}" />
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="bi bi-tag"></i>
+                                    <span class="text-body-secondary" th:text="${article.category.name}" />
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="bi bi-person"></i>
+                                    <span class="text-body-secondary" th:text="${article.user.username}" />
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </article>
