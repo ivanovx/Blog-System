@@ -57,8 +57,9 @@
                 </div>
             </header>
 
-                <div class="p-5 p-md-5 mb-4 rounded text-bg-dark">
-                    <div class="col-md-8 px-0">
+                <div class="p-5 p-md-5 mb-4 rounded text-bg-dark" style="background-image: url(/images/header.jpg); background-size: cover">
+                    <div class="col-md-12 px-0 text-center">
+                        <img class="img-fluid rounded-circle border border-3" src="/images/avatar.jpg" width="150" height="150" alt="avatar" />
                         <h1 class="display-4 fst-italic" th:text='${settings.get("title")}' />
                         <h2 class="lead my-3" th:text='${settings.get("description")}' />
                     </div>

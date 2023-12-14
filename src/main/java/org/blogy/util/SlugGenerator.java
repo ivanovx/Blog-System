@@ -29,11 +29,11 @@ public class SlugGenerator {
                 Map.entry('т', "t"),
                 Map.entry('у', "u"),
                 Map.entry('ф', "f"),
-                Map.entry('х', "kh"),
+                Map.entry('х', "h"),
                 Map.entry('ц', "ts"),
                 Map.entry('ч', "ch"),
                 Map.entry('ш', "sh"),
-                Map.entry('щ', "shch"),
+                Map.entry('щ', "sht"),
                 Map.entry('ъ', "a"),
                 Map.entry('ю', "yu"),
                 Map.entry('я', "ya")
@@ -43,7 +43,7 @@ public class SlugGenerator {
     public static String toSlug(String uglyString) {
         Map<Character, String> characters = getCharacters();
 
-        return uglyString.chars().mapToObj(c -> (char) c).filter(c -> Character.isLetterOrDigit(c) || Character.isWhitespace(c)).map(c -> {
+        return uglyString.toLowerCase().chars().mapToObj(c -> (char) c).filter(c -> Character.isLetterOrDigit(c) || Character.isWhitespace(c)).map(c -> {
             if (Character.isWhitespace(c)) {
                 return "-";
             }
