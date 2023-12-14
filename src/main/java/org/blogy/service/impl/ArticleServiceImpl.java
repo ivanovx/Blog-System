@@ -1,7 +1,9 @@
-package org.blogy.service;
+package org.blogy.service.impl;
 
 import java.util.*;
 
+import org.blogy.service.ArticleService;
+import org.blogy.service.CategoryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

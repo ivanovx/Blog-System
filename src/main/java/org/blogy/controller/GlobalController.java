@@ -33,7 +33,7 @@ public class GlobalController {
 
     @ModelAttribute("settings")
     public Map<String, String> settings() {
-        return settingService.settingsMap();
+        return settingService.getSettingsMap();
     };
 
     @ModelAttribute("archive")

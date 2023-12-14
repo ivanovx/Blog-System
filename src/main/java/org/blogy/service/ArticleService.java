@@ -15,7 +15,7 @@ public interface ArticleService {
 
     Page<Article> getArticles(Pageable pageable);
 
-    List<Article> getArticles(String categoryName);
+    List<Article> getArticles(String category);
 
     Article getArticle(long id);
 

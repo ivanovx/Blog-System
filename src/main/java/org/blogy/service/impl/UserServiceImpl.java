@@ -1,9 +1,10 @@
-package org.blogy.service;
+package org.blogy.service.impl;
 
 import java.time.LocalDateTime;
 
 import org.blogy.entity.Role;
 import org.blogy.entity.User;
+import org.blogy.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -10,6 +10,4 @@ public interface UserService {
     boolean haveAdminUser();
 
     User createUser(User user);
-
-    User updateUser(User user);
 }

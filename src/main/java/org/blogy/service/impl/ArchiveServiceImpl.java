@@ -1,4 +1,4 @@
-package org.blogy.service;
+package org.blogy.service.impl;
 
 import java.util.Map;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.time.YearMonth;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
+import org.blogy.service.ArchiveService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

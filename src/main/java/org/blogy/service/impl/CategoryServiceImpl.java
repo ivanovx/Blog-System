@@ -1,8 +1,9 @@
-package org.blogy.service;
+package org.blogy.service.impl;
 
 import java.util.List;
 
 import org.blogy.entity.Category;
+import org.blogy.service.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

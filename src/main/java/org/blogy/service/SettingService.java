@@ -10,7 +10,7 @@ public interface SettingService {
 
     List<Setting> getSettings();
 
-    Map<String, String> settingsMap();
+    Map<String, String> getSettingsMap();
 
     Setting getSetting(long id);
 

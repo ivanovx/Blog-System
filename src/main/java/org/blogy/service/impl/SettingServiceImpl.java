@@ -1,9 +1,10 @@
-package org.blogy.service;
+package org.blogy.service.impl;
 
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.blogy.service.SettingService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +40,7 @@ public class SettingServiceImpl implements SettingService {
         return settingRepository.findByName(name).orElseThrow();
     }
 
-    public Map<String, String> settingsMap() {
+    public Map<String, String> getSettingsMap() {
         return getSettings().stream().collect(Collectors.toMap(Setting::getName, Setting::getValue));
     }
 
