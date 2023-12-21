@@ -1,11 +1,14 @@
 package org.blogy.controller;
 
+
 import org.springframework.ui.Model;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.blogy.entity.Article;
@@ -21,10 +24,11 @@ public class HomeController {
     }
 
     @GetMapping
-    public String articles(Model model, Pageable pageable) {
-        Page<Article> page = articleService.getArticles(pageable);
+    public String articles(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+        Pageable pageable = PageRequest.of(page, 3);
+        Page<Article> articlesPage = articleService.getArticles(pageable);
 
-        model.addAttribute("page", page);
+        model.addAttribute("page", articlesPage);
 
         return "home/index";
     }

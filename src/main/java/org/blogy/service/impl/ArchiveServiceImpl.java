@@ -40,6 +40,6 @@ public class ArchiveServiceImpl implements ArchiveService {
     }
 
     private Stream<Article> getAllArticles() {
-        return articleRepository.findByOrderByCreatedDesc().stream();
+        return articleRepository.findAllByOrderByCreatedDesc().stream();
     }
 }

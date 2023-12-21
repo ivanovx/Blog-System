@@ -6,6 +6,7 @@ import org.blogy.service.ArticleService;
 import org.blogy.service.CategoryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,12 +35,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Transactional(readOnly = true)
     public List<Article> getArticles() {
-        return articleRepository.findByOrderByCreatedDesc();
+        return articleRepository.findAllByOrderByCreatedDesc();
     }
 
     @Transactional(readOnly = true)
     public Page<Article> getArticles(Pageable pageable) {
-        return articleRepository.findByOrderByCreatedDesc(pageable);
+        return articleRepository.findAllByOrderByCreatedDesc(pageable);
     }
 
     @Transactional(readOnly = true)

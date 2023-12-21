@@ -31,12 +31,11 @@
                 </article>
             </div>
 
-            <!--
-            <nav class="blog-pagination">
-                <a class="btn btn-outline-primary rounded-pill" th:href="${page.previousOrFirstPageable()}">Older</a>
-                <a class="btn btn-outline-secondary rounded-pill disabled" th:href="${page.nextOrLastPageable()}">Newer</a>
-            </nav>
-            -->
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:each="p: ${#numbers.sequence(0, page.totalPages - 1)}">
+                    <a  class="page-link" th:href="@{/(page=${p})}" th:text="${p}" />
+                </li>
+            </ul>
         </section>
     </body>
 </html>
