@@ -6,8 +6,7 @@
         <title>Home</title>
     </head>
     <body>
-        <section layout:fragment="content">
-            <div class="row">
+            <div class="row" layout:fragment="content">
                 <article class="col-md-12" th:each="article: ${page.content}">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
@@ -29,13 +28,12 @@
                         </div>
                     </div>
                 </article>
-            </div>
 
-            <ul class="pagination justify-content-center">
-                <li class="page-item" th:each="p: ${#numbers.sequence(0, page.totalPages - 1)}">
-                    <a  class="page-link" th:href="@{/(page=${p})}" th:text="${p}" />
-                </li>
-            </ul>
-        </section>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:each="p: ${#numbers.sequence(0, page.totalPages - 1)}">
+                        <a class="page-link" th:href="@{/(page=${p})}" th:text="${p}" />
+                    </li>
+                </ul>
+            </div>
     </body>
 </html>

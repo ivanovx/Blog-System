@@ -1,14 +1,11 @@
 package org.blogy.repository;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.blogy.entity.Category;
 
-public interface CategoryRepository extends CrudRepository<Category, Long> {
-    List<Category> findAll();
-
+public interface CategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findByName(String name);
 }

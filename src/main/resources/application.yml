@@ -9,6 +9,10 @@ spring:
     generate-ddl: true
     show-sql: false
     open-in-view: false
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
 
 blogy:
   admin:

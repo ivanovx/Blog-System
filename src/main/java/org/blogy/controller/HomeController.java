@@ -24,8 +24,8 @@ public class HomeController {
     }
 
     @GetMapping
-    public String articles(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
-        Pageable pageable = PageRequest.of(page, 3);
+    public String articles(Pageable pageable, Model model) {
+       // Pageable pageable = PageRequest.of(page, 3);
         Page<Article> articlesPage = articleService.getArticles(pageable);
 
         model.addAttribute("page", articlesPage);
