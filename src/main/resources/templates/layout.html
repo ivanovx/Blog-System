@@ -9,6 +9,9 @@
 
         <title>Blogy</title>
 
+        <meta name="robots" content="index,follow" />
+        <meta name="description" th:content='${settings.get("description")}' />
+
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/css/bootstrap-icons.min.css" />
     </head>
@@ -55,7 +58,7 @@
                 </div>
             </header>
 
-            <div class="p-5 p-md-5 mb-4 rounded text-center text-bg-dark" style="background-image: url(/images/header.jpg); background-size: cover">
+            <div class="p-5 p-md-5 mb-4 rounded text-center" style="background-image: url(/images/header.jpg); background-size: cover">
                 <img class="img-fluid rounded-circle border border-3" src="/images/avatar.jpg" width="150" height="150" alt="avatar" />
                 <h1 class="display-4 fst-italic" th:text='${settings.get("title")}' />
                 <h2 class="lead my-3" th:text='${settings.get("description")}' />
