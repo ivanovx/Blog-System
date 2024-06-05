@@ -20,7 +20,7 @@ public class WebConfig {
     @Bean
     public PageableHandlerMethodArgumentResolverCustomizer paginationCustomizer() {
         return pageableResolver -> {
-            pageableResolver.setOneIndexedParameters(true); //default is false, starts with 0
+            pageableResolver.setOneIndexedParameters(true);
         };
     }
 
