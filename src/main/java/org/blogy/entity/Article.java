@@ -21,10 +21,6 @@ public class Article extends BaseEntity {
     @Column(nullable = false, columnDefinition="TEXT")
     private String content;
 
-   // @ElementCollection(fetch = FetchType.EAGER)
-  //  @CollectionTable(name="article_keywords")
-  //  private Set<@Pattern(regexp = "^[\\w\\s\\+-]+$") String> keywords;
-
     @ManyToOne
     private Category category;
 

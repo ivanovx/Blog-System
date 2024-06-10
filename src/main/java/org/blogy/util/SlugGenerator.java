@@ -43,7 +43,8 @@ public class SlugGenerator {
     public static String toSlug(String uglyString) {
         Map<Character, String> characters = getCharacters();
 
-        return uglyString.toLowerCase().chars().mapToObj(c -> (char) c).filter(c -> Character.isLetterOrDigit(c) || Character.isWhitespace(c)).map(c -> {
+        return uglyString.toLowerCase().chars().mapToObj(c -> (char) c).filter(c -> Character.isLetterOrDigit(c) || Character.isWhitespace(c))
+                .map(c -> {
             if (Character.isWhitespace(c)) {
                 return "-";
             }
